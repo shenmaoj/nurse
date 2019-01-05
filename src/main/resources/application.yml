@@ -1,0 +1,43 @@
+server:
+  port: 8080
+spring:
+   http:
+     encoding:
+       enabled: true
+       charset: utf-8
+   datasource:
+     type: com.alibaba.druid.pool.DruidDataSource
+     driverClassName: com.mysql.jdbc.Driver
+     druid:
+       url: jdbc:mysql://127.0.0.1:3306/nurse?characterEncoding=utf8&useSSL=false&autoReconnect=true&nullCatalogMeansCurrent=true
+       username: root
+       password: nihaoma
+       initial-size: 10
+       max-active: 100
+       min-idle: 10
+       max-wait: 60000
+       pool-prepared-statements: true
+       max-pool-prepared-statement-per-connection-size: 20
+       time-between-eviction-runs-millis: 60000
+       min-evictable-idle-time-millis: 300000
+       validation-query: SELECT 1
+       test-while-idle: true
+       test-on-borrow: false
+       test-on-return: false
+mybatis:
+   mapper-locations: classpath:mybatis/**/*Mapper.xml,classpath:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
+   type-aliases-package: com.cmnt.nurse.model.*.*
+   configuration:
+       cache-enabled: false
+       call-setters-on-nulls: true
+       map-underscore-to-camel-case: true
+       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+logging:
+  level:
+    root: info

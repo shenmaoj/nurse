@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmnt.nurse.dao.sys.SysRoleAuthzMapper" >
+  <resultMap id="BaseResultMap" type="com.cmnt.nurse.model.sys.SysRoleAuthz" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
+    <result column="authz" property="authz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_id, menu_id, authz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_role_authz
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_role_authz
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.cmnt.nurse.model.sys.SysRoleAuthz" >
+    insert into t_sys_role_authz (id, role_id, menu_id, 
+      authz)
+    values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, 
+      #{authz,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmnt.nurse.model.sys.SysRoleAuthz" >
+    insert into t_sys_role_authz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="authz != null" >
+        authz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="authz != null" >
+        #{authz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmnt.nurse.model.sys.SysRoleAuthz" >
+    update t_sys_role_authz
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        menu_id = #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="authz != null" >
+        authz = #{authz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmnt.nurse.model.sys.SysRoleAuthz" >
+    update t_sys_role_authz
+    set role_id = #{roleId,jdbcType=VARCHAR},
+      menu_id = #{menuId,jdbcType=VARCHAR},
+      authz = #{authz,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
