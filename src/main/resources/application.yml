@@ -24,6 +24,8 @@ spring:
        test-while-idle: true
        test-on-borrow: false
        test-on-return: false
+   mvc:
+     static-path-pattern: /static/**
 mybatis:
    mapper-locations: classpath:mybatis/**/*Mapper.xml,classpath:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
    type-aliases-package: com.cmnt.nurse.model.*.*
