@@ -75,3 +75,40 @@ CREATE TABLE `t_sys_basedata_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典类型表';
 
+CREATE TABLE `t_sys_user_ex` (
+  `id` varchar(32) NOT NULL,
+  `user_id` varchar(32) DEFAULT NULL,
+  `real_name` varchar(32) DEFAULT NULL COMMENT '姓名',
+  `sex` tinyint(2) DEFAULT NULL COMMENT '性别（1：男；0：女）',
+  `id_card_type` varchar(2) DEFAULT '01' COMMENT '证件类型（01：身份证）',
+  `id_card_number` varchar(64) DEFAULT NULL COMMENT '证件号码',
+  `vocational_certificate_number` varchar(32) DEFAULT NULL COMMENT '职业证书编号',
+  `attachment_id_card_positive` varchar(32) DEFAULT NULL COMMENT '证件号正面',
+  `attachment_id_card_reverse` varchar(32) DEFAULT NULL COMMENT '证件号反面',
+  `attachment_id_card_handheld` varchar(32) DEFAULT NULL COMMENT '手持身份证',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户其他信息表';
+
+CREATE TABLE `t_sys_org` (
+  `id` varchar(32) NOT NULL,
+  `org_name` varchar(60) DEFAULT NULL COMMENT '医院名称',
+  `org_number` varchar(30) DEFAULT NULL COMMENT '机构编号',
+  `link_man` varchar(20) DEFAULT NULL COMMENT '机构联系人',
+  `link_phone` varchar(20) DEFAULT NULL COMMENT '联系方式',
+  `link_email` varchar(32) DEFAULT NULL COMMENT '联系邮箱',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='机构信息表';
+
+CREATE TABLE `t_sys_date_time_set` (
+  `id` varchar(32) NOT NULL,
+  `year` varchar(4) DEFAULT NULL COMMENT '年度',
+  `start_date_time` datetime DEFAULT NULL COMMENT '开始时间',
+  `end_date_time` datetime DEFAULT NULL COMMENT '截至时间',
+  `type` varchar(2) DEFAULT NULL COMMENT '时间类型',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态',
+  `create_date` datetime DEFAULT NULL,
+  `last_update_time` datetime DEFAULT NULL,
+  `create_id` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日期设置表';
