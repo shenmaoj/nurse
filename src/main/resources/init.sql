@@ -112,3 +112,9 @@ CREATE TABLE `t_sys_date_time_set` (
   `create_id` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日期设置表';
+
+/*  菜单数据 */
+INSERT INTO `nurse`.`t_sys_menu` (`id`, `parent_id`, `name`, `code`, `icon`, `url`, `level`, `menu_order`, `authz`) VALUES ('0b52954e605b11e7b779fcaa1420446b', 'd660c65f605a11e7b779fcaa1420446b', '菜单管理', 'MENU_MENU_MANAGE', NULL, '/system/menu/menu-tree.html', '2', '4', 'admin');
+INSERT INTO `nurse`.`t_sys_menu` (`id`, `parent_id`, `name`, `code`, `icon`, `url`, `level`, `menu_order`, `authz`) VALUES ('34d700eb605b11e7b779fcaa1420446b', 'd660c65f605a11e7b779fcaa1420446b', '角色管理', 'MENU_ROLE_MANAGE', NULL, '/system/role/role-index.html', '2', '2', NULL);
+INSERT INTO `nurse`.`t_sys_menu` (`id`, `parent_id`, `name`, `code`, `icon`, `url`, `level`, `menu_order`, `authz`) VALUES ('3fef72bade1e434fbaae895d7957a9a5', 'd660c65f605a11e7b779fcaa1420446b', '字典表管理', 'MENU_DICTIONARY_MANAGE', NULL, '/system/dictionary/dictionary-index.html', '2', '5', 'admin');
+INSERT INTO `nurse`.`t_sys_menu` (`id`, `parent_id`, `name`, `code`, `icon`, `url`, `level`, `menu_order`, `authz`) VALUES ('d660c65f605a11e7b779fcaa1420446b', 'root', '系统管理', 'MENU_SYSTEM_MANAGE', 'icon-desktop', '', '1', '1', '');

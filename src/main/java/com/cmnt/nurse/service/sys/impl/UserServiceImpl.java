@@ -1,5 +1,6 @@
 package com.cmnt.nurse.service.sys.impl;
 
+import com.cmnt.nurse.common.enums.UserStatusEnum;
 import com.cmnt.nurse.common.exception.BusinessException;
 import com.cmnt.nurse.common.utils.Constants;
 import com.cmnt.nurse.dao.sys.SysUserMapper;
@@ -26,12 +27,12 @@ public class UserServiceImpl implements UserService {
     public SysUser findUserByName(String userName) {
         Map<String,Object> map = new HashMap<>();
         map.put("username",userName);
-        map.put("status", Constants.USER_STATUS[0]);
+        map.put("status", UserStatusEnum.INVALID.getValue());
         SysUser user = userMapper.findUserByName(map);
         if (null == user){
             throw BusinessException.creat("90001");
         }
-        if(Constants.USER_STATUS[2].equals(user.getStatus())){
+        if( UserStatusEnum.FREEZE.getValue().equals(user.getStatus())){
             throw BusinessException.creat("90002");
         }
         return user;
