@@ -4,6 +4,7 @@ import com.cmnt.nurse.common.exception.BusinessException;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -188,7 +189,4 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		return true;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(toMd5("111111"));
-	}
 }

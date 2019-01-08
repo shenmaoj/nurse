@@ -3,6 +3,7 @@ package com.cmnt.nurse.common.datatables;
 
 
 import com.cmnt.nurse.mybatis.page.PageResultList;
+import com.github.pagehelper.Page;
 
 import java.util.HashMap;
 
@@ -20,12 +21,15 @@ public class DataTablesResponse extends HashMap<String, Object> {
 
 	private static final long serialVersionUID = -2750736673833454302L;
 
-	public DataTablesResponse(PageResultList<?> list) {
-		put("recordsFiltered", list.getTotalRecord());
-		put("recordsTotal", list.getTotalRecord());
-		put("totalPage", list.getTotalPage());
-		put("pageNo", list.getPageNo());
-		put("data", list);
+	public DataTablesResponse(Page<?> page) {
+		this(page,0);
 	}
-	
+	public DataTablesResponse(Page<?> page,Integer draw) {
+		put("recordsFiltered", page.getTotal());
+		put("recordsTotal", page.getTotal());
+		put("totalPage", page.getPages());
+		put("pageNo", page.getPageNum());
+		put("data", page.getResult());
+		put("draw", draw);
+	}
 }

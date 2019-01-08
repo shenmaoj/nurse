@@ -333,6 +333,16 @@ jQuery.extend(jQuery.validator.messages, {
     min: jQuery.validator.format("请输入一个最小为 {0} 的值")
 });
 
+function checkAll() {
+    $("#checkAll").click(function () {
+        if($(this).is(":checked")){
+            $(this).closest("table").find("input[name='checkbox'].ace").prop("checked",true);
+        }else{
+            $(this).closest("table").find("input[name='checkbox'].ace").prop("checked",false);
+        }
+    })
+}
+
 function ajax(url,type,data,callback) {
     $.ajax({
         url: url,

@@ -12,10 +12,19 @@
                 #{id}
             </foreach>
         </if>
+        ORDER BY menu_order
     </select>
 
-    <select id="findMenusIdOfParentId" parameterType="string" resultType="string">
-        SELECT id FROM t_sys_menu WHERE parent_id = #{parentId,jdbcType=VARCHAR}
+    <select id="findMenusIdOfParentId" parameterType="string" resultType="com.cmnt.nurse.vo.sys.MenuVO">
+        SELECT id,parent_id parentId,name,code,icon,url,level,menu_order menuOrder,authz
+         FROM t_sys_menu WHERE parent_id = #{parentId,jdbcType=VARCHAR}
+         <if test="name != null and name != ''">
+             AND name LIKE CONCAT('%',#{name},'%')
+         </if>
+        <if test="code != null and code != ''">
+            AND code LIKE CONCAT('%',#{code},'%')
+        </if>
+        ORDER BY menu_order
     </select>
 
     <delete id="deleteMenuOfIds" parameterType="list">

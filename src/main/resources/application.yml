@@ -24,8 +24,8 @@ spring:
        test-while-idle: true
        test-on-borrow: false
        test-on-return: false
-   mvc:
-     static-path-pattern: /static/**
+   resources:
+     static-locations: file:G:/Program Files/work/IDEA_Workspace/nurse/src/main/resources/static/
 mybatis:
    mapper-locations: classpath:mybatis/**/*Mapper.xml,classpath:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
    type-aliases-package: com.cmnt.nurse.model.*.*
@@ -35,11 +35,7 @@ mybatis:
        map-underscore-to-camel-case: true
        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #pagehelper
-pagehelper:
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    params: count=countSql
 logging:
   level:
     root: info
+    org.mybatis: debug

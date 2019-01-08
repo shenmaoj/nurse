@@ -4,6 +4,7 @@ import com.cmnt.nurse.model.sys.SysMenu;
 import com.cmnt.nurse.vo.sys.MenuVO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SysMenuMapper {
     int deleteByPrimaryKey(String id);
@@ -21,7 +22,7 @@ public interface SysMenuMapper {
 
     List<MenuVO> findMenuOfIds(List<String> menuIds);
 
-    List<String> findMenusIdOfParentId(String parentId);
+    List<MenuVO> findMenusIdOfParentId(Map<String,Object> map);
 
     int deleteMenuOfIds(List<String> menuIds);
 }
