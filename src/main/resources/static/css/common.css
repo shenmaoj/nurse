@@ -1,0 +1,11 @@
+.fr{
+    display: flex;
+    flex-direction: row;
+}
+.mr5{
+    margin-right: 5px;
+}
+
+.outline{
+    outline: none;
+}
