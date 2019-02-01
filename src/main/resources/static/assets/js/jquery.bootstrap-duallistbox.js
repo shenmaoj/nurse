@@ -10,9 +10,9 @@
   // Create the defaults once
   var pluginName = 'bootstrapDualListbox',
     defaults = {
-      bootstrap2Compatible: false,
-      filterTextClear: 'show all',
-      filterPlaceHolder: 'Filter',
+      bootstrap2Compatible: true,
+      filterTextClear: '显示全部',
+      filterPlaceHolder: '筛选',
       moveSelectedLabel: 'Move selected',
       moveAllLabel: 'Move all',
       removeSelectedLabel: 'Remove selected',
@@ -26,9 +26,11 @@
       showFilterInputs: true,                                                             // whether to show filter inputs
       nonSelectedFilter: '',                                                              // string, filter the non selected options
       selectedFilter: '',                                                                 // string, filter the selected options
-      infoText: 'Showing all {0}',                                                        // text when all options are visible / false for no info text
+      infoText: '权限列表 {0}',                                                        // text when all options are visible / false for no info text
+      selectInfoText: '已选权限 {0}',
       infoTextFiltered: '<span class="label label-warning">Filtered</span> {0} from {1}', // when not all of the options are visible due to the filter
-      infoTextEmpty: 'Empty list',                                                        // when there are no options present in the list
+      infoTextEmpty: '权限列表 0',                                                        // when there are no options present in the list
+      selectInfoTextEmpty: '已选权限 0',
       filterOnValues: false                                                               // filter by selector's values, boolean
 	  , buttonClass: 'btn-white btn-bold'//ACE
     },
@@ -103,9 +105,9 @@
     dualListbox.elements.box1.toggleClass('filtered', !(visible1 === all1 || all1 === 0));
 
     if (all2 === 0) {
-      content = dualListbox.settings.infoTextEmpty;
+      content = dualListbox.settings.selectInfoTextEmpty;
     } else if (visible2 === all2) {
-      content = formatString(dualListbox.settings.infoText, [visible2, all2]);
+      content = formatString(dualListbox.settings.selectInfoText, [visible2, all2]);
     } else {
       content = formatString(dualListbox.settings.infoTextFiltered, [visible2, all2]);
     }
@@ -428,8 +430,8 @@
       this.settings.bootstrap2Compatible = value;
       if (value) {
         this.container.removeClass('row').addClass('row-fluid bs2compatible');
-        this.container.find('.box1, .box2').removeClass('col-md-6').addClass('span6');
-        this.container.find('.clear1, .clear2').removeClass('btn-default btn-xs').addClass('btn-mini');
+        this.container.find('.box1, .box2').addClass('col-md-6').removeClass('span6');
+        this.container.find('.clear1, .clear2').removeClass('btn-default btn-xs').addClass('btn-minier');
         this.container.find('input, select').removeClass('form-control');
         this.container.find('.btn').removeClass('btn-default');
         this.container.find('.moveall > i, .move > i').removeClass('fa fa-arrow-right').addClass('icon-arrow-right');//ACE

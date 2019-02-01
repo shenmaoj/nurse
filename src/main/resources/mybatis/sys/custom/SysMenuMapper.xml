@@ -34,4 +34,11 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="findMenuByCode" parameterType="map" resultType="com.cmnt.nurse.vo.sys.MenuVO">
+        select from t_sys_menu where code = #{code,jdbcType=VARCHAR}
+        <if test="id != null and id != ''">
+            and id != #{id,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

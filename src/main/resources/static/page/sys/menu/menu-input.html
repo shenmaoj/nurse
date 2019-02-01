@@ -1,18 +1,22 @@
 <div class="modal-dialog" style="width: 60%">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="bootbox-close-button close outline" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="bootbox-close-button close outline" data-dismiss="modal" aria-hidden="true">×
+            </button>
             <h5 class="modal-title">菜单新增</h5>
         </div>
         <div class="modal-body fr">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="menu-form">
+                <input type="hidden" id="id" name="id">
+                <input type="hidden" id="parentId" name="parentId">
+                <input type="hidden" id="level" name="level">
                 <div class="col-xs-6">
                     <div class="form-group">
                         <div class="col-xs-4">
                             <label class="col-xs-12  control-label no-padding-right" for="parentName">上级菜单名称</label>
                         </div>
                         <div class="col-xs-8">
-                            <input type="text" id="parentName" readonly  class="col-xs-12">
+                            <input type="text" id="parentName" readonly class="col-xs-12">
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,19 +64,32 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <div class="col-xs-4">
+                        <div class="col-xs-2">
                             <label class="col-xs-12  control-label no-padding-right" for="authz">菜单按钮</label>
                         </div>
-                        <div class="col-xs-8">
-                            <input type="text" id="authz" name="authz" class="col-xs-12">
+                        <div class="col-xs-10 no-padding">
+                            <select multiple="multiple" id="authz" name="authz" class="form-control">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3" selected="selected">Option 3</option>
+                                <option value="option4">Option 4</option>
+                                <option value="option5">Option 5</option>
+                                <option value="option6" selected="selected">Option 6</option>
+                                <option value="option7">Option 7</option>
+                                <option value="option8">Option 8</option>
+                                <option value="option9">Option 9</option>
+                                <option value="option0">Option 10</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button data-bb-handler="cancel" type="button" class="btn btn-xs btn-default" data-dismiss="modal" aria-hidden="true">取消</button>
-            <button data-bb-handler="confirm" type="button" class="btn btn-xs btn-primary">确定</button>
+            <button data-bb-handler="cancel" type="button" class="btn btn-xs btn-default" data-dismiss="modal"
+                    aria-hidden="true">取消
+            </button>
+            <button data-bb-handler="confirm" id="confirm" type="button" class="btn btn-xs btn-primary">确定</button>
         </div>
     </div>
 </div>

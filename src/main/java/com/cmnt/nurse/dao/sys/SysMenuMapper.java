@@ -25,4 +25,6 @@ public interface SysMenuMapper {
     List<MenuVO> findMenusIdOfParentId(Map<String,Object> map);
 
     int deleteMenuOfIds(List<String> menuIds);
+
+    MenuVO findMenuByCode(Map<String,Object> map);
 }

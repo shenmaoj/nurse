@@ -100,8 +100,8 @@ var CommonUtil = {
     dangerAlert: function (text, options) {
         swal({
             title: "操作提示",
-            text: options.text,
-            type: "error",
+            text: text,
+            type: "warning",
             showCancelButton: true,
             cancelButtonClass: 'btn-secondary waves-effect',
             cancelButtonText: '取消',
@@ -109,25 +109,14 @@ var CommonUtil = {
             confirmButtonText: '确定',
             closeOnConfirm: false
         }, function () {
-            $.ajax({
-                url: options.url,
-                type: "POST",
-                data: options.data,
-                dataType: "json",
-                contentType: 'application/json;charset=UTF-8',
-                success: function (json) {
-                    if (json && success_code == json.resCode && json.data) {
-                        if (options.tree) {
-                            $(options.tree).jstree(true).refresh();
-                        }
-                        if (options.table) {
-                            $(options.table).DataTable().draw(false);
-                        }
-                        commonModal.alert(option_success, pattern[0]);
-                    } else {
-                        commonModal.alert(option_fail, pattern[1]);
-                    }
+            ajax(options.url,null,options.data,function () {
+                if (options.tree) {
+                    $(options.tree).jstree(true).refresh();
                 }
+                if (options.table) {
+                    $(options.table).DataTable().draw(false);
+                }
+                CommonUtil.alert(option_success, pattern[0]);
             });
         });
     },
@@ -346,7 +335,7 @@ function checkAll() {
 function ajax(url,type,data,callback) {
     $.ajax({
         url: url,
-        type: type,
+        type: type||'POST',
         data: JSON.stringify(data),
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',

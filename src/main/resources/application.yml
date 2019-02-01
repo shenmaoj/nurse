@@ -25,7 +25,7 @@ spring:
        test-on-borrow: false
        test-on-return: false
    resources:
-     static-locations: file:G:/Program Files/work/IDEA_Workspace/nurse/src/main/resources/static/
+     static-locations: file:D:/work/workspace/idea1.8/git/nurse/src/main/resources/static/
 mybatis:
    mapper-locations: classpath:mybatis/**/*Mapper.xml,classpath:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
    type-aliases-package: com.cmnt.nurse.model.*.*

@@ -25,6 +25,12 @@ public interface MenuService {
     List<Map<String,Object>> menuToJsTree();
 
 
+    /**
+     * 菜单列表
+     * @param dataTablesRequest
+     * @param map
+     * @return
+     */
     DataTablesResponse menuOfChildren(DataTablesRequest dataTablesRequest,Map<String,Object> map);
 
     /**
@@ -41,4 +47,12 @@ public interface MenuService {
      */
     int deleteMenu(String id);
 
+    /**
+     * 验证菜单编码是否存在
+     * @param map
+     * @return
+     */
+    Boolean validCode(Map<String,Object> map);
+
+    MenuVO findOneOfId(String id);
 }

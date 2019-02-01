@@ -126,6 +126,19 @@ public class MenuServiceImpl implements MenuService {
     }
 
 
+    @Override
+    public Boolean validCode(Map<String, Object> map) {
+        return menuMapper.findMenuByCode(map) == null;
+    }
+
+    @Override
+    public MenuVO findOneOfId(String id) {
+        SysMenu menu = menuMapper.selectByPrimaryKey(id);
+        MenuVO menuVO = new MenuVO();
+        BeanCopyUtils.copyProperties(menu, menuVO);
+        return menuVO;
+    }
+
     /**
      * 将菜单转为树形结构数据
      *
